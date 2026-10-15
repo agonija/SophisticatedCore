@@ -8,6 +8,8 @@ on:
         required: false
         type: string
   push:
+    branches:
+      - '1.21.x'
 
 jobs:
   mod_build:
