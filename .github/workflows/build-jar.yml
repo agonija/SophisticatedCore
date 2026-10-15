@@ -1,0 +1,53 @@
+name: 'Build Jar (sort icon + DE lang fixes)'
+
+on:
+  push:
+    branches:
+      - 'fix/sort-button-icon'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: read
+
+jobs:
+  build:
+    name: Build Jar
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '21'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: wrapper
+
+      - name: Build jar (without tests and code quality checks)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          chmod +x gradlew
+          ./gradlew assemble -x test --no-daemon
+
+      - name: Collect jar
+        shell: bash
+        run: |
+          mkdir dist
+          cp build/libs/*.jar dist
+          ls -la dist
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sophisticatedcore-jar
+          if-no-files-found: error
+          path: dist/*
