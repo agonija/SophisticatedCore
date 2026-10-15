@@ -73,7 +73,7 @@ public class ButtonDefinitions {
 			Component.translatable(TranslationHelper.INSTANCE.translButton("transfer_to_inventory_filtered")),
 			Component.translatable(TranslationHelper.INSTANCE.translButton("transfer_to_inventory_filtered.transfer_all")).withStyle(ChatFormatting.DARK_GRAY));
 
-	private static final TextureBlitData SORT_BUTTON_FOREGROUND = new TextureBlitData(ICONS, Dimension.SQUARE_256, new UV(0, 144), Dimension.SQUARE_12);
+	private static final TextureBlitData SORT_BUTTON_FOREGROUND = new TextureBlitData(ICONS, Dimension.SQUARE_256, new UV(72, 144), Dimension.SQUARE_12);
 	public static final ButtonDefinition SORT = new ButtonDefinition(Dimension.SQUARE_12, SMALL_BUTTON_BACKGROUND, SMALL_BUTTON_HOVERED_BACKGROUND,
 			SORT_BUTTON_FOREGROUND, Component.translatable(TranslationHelper.INSTANCE.translButton("sort_action")));
 
