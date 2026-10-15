@@ -1,9 +1,9 @@
-name: 'Build Jar (sort icon + DE lang fixes)'
+name: 'Build Jar 1.5.7 (sort icon + DE lang fixes)'
 
 on:
   push:
     branches:
-      - 'fix/sort-button-icon'
+      - 'fix/sort-button-icon-1.5.7'
   workflow_dispatch:
 
 permissions:
